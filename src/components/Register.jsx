@@ -1,12 +1,17 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
+  const authInfo = useContext(AuthContext);
+  console.log(authInfo);
+
   const handleRegister = (e) => {
     e.preventDefault();
-    const name = e.target.elements.username.value;
-    const password = e.target.elements.password.value;
-    const email = e.target.elements.email.value;
-    console.log(name, password, email);
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(name, email, password);
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -22,6 +27,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                name="name"
                 placeholder="Enter your name"
                 className="input input-bordered"
                 required
@@ -33,6 +39,7 @@ const Register = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your  email"
                 className="input input-bordered"
                 required
@@ -44,6 +51,7 @@ const Register = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="Enter your password"
                 className="input input-bordered"
                 required
